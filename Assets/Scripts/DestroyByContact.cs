@@ -45,10 +45,8 @@ public class DestroyByContact : MonoBehaviour {
          * Explosion is instantiated at the position and the rotation
          * defined for the asteroïd
          */
-        if (explosion != null) {
-            Instantiate(explosion, transform.position, transform.rotation);
-            
-        }
+        if (explosion != null) { 	Instantiate(explosion, transform.position, transform.rotation); 	}
+
         if (collider.CompareTag("PlayerBolt")) {
             float random = Random.Range(1, 12);
             if(random == 1)
@@ -63,7 +61,10 @@ public class DestroyByContact : MonoBehaviour {
              * Destroy gameobject's script attach and his children
              */
             Destroy(gameObject);
+
+			gameController.addScore(scoreValue);
         }
+
         if (collider.CompareTag("Player")) {
             if(!lifeController.getInvincible()) {
                 gameController.setLife(lifeValue);
@@ -77,7 +78,5 @@ public class DestroyByContact : MonoBehaviour {
             }
         }
 
-        gameController.addScore(scoreValue);
-      
     }
 }
